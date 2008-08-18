@@ -497,6 +497,9 @@ and then view them as a blog visitor at [http://localhost:3000/blog](http://loca
 <p>Now type <code>mind</code> and &amp;#x21E5;. Choose <code>Add / Remove Index</code> (1). Type <code>comments</code> &amp;#x21E5; <code>post_id</code>.</p>
 <p>The end result looks like this:</p>
 <p><pre class='syntax'><span class="keyword">class </span><span class="class">ModifyComments</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Migration</span>
+
+<p>Your file may not be called <code>003_modify_comments.rb</code>, it might instead be date-stamped. If you want the incremental style of migration names, set the Environmental Variable <code>TM_RAILS_MIGRATION_INCREMENT</code> to "YES" (or "NO" for date stamp migrations). TextMate defaults to "NO", although this demo will assume incremental style.</p>
+
   <span class="keyword">def </span><span class="method">self.up</span>
     <span class="ident">rename_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:name</span><span class="punct">,</span> <span class="symbol">:author</span>
     <span class="ident">add_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author_url</span><span class="punct">,</span> <span class="symbol">:string</span>
