@@ -554,26 +554,34 @@ and then view them as a blog visitor at [http://localhost:3000/blog](http://loca
     <span class="keyword">end</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre></p>
-<p>Modify the <code>blog_controller.rb</code> file. Replace <code>Post.find_all_by_published(true)</code> by <code>Post.find(:all, :conditions =&gt; "published_at IS NOT NULL")</code>.</p>
-<p>Finally, check your tests again (&amp;#x2303; \). All tests should pass.</p>
-<h1>Environmental Variable Reference</h1>
-<table>
-	<tr>
-		<th>Variable</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td><code style="whitespace: pre">RAILS_VIEW_EXT</code></td>
-		<td>The default extension for Rails views (used for creating, and Go To File commands)</td>
-	</tr>
-	<tr>
-		<td><code style="whitespace: pre">TM_RAILS_MIGRATION_INCREMENT</code></td>
-		<td>YES = name migrations based on migration number, incrementing from one. NO (default) = name migrations based on date</td>
-	</tr>
-</table>
+	<p>Modify the <code>blog_controller.rb</code> file. Replace <code>Post.find_all_by_published(true)</code> by <code>Post.find(:all, :conditions =&gt; "published_at IS NOT NULL")</code>.</p>
 
-<h1><span class="caps">TODO</span></h1>
-<ul>
+
+	<p>Finally, check your tests again (&#x2303; \). All tests should pass.</p>
+
+    <h1>Environmental Variable Reference</h1>
+	<table>
+		<tr>
+			<th>Variable</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td><code style="whitespace: pre">RAILS_VIEW_EXT</code></td>
+			<td>The default extension for Rails views (used for creating, and Go To File commands)</td>
+		</tr>
+		<tr>
+			<td><code style="whitespace: pre">TM_RAILS_MIGRATION_INCREMENT</code></td>
+			<td>YES = name migrations based on migration number, incrementing from one. NO (default) = name migrations based on date</td>
+		</tr>
+		<tr>
+			<td><code style="whitespace: pre">RAILS_VIEW_NAME_INCLUDES_HTML</code></td>
+			<td>YES (default) = view names extensions are .html.#{RAILS_VIEW_EXT}. NO = view names are .#{RAILS_VIEW_EXT}</td>
+		</tr>
+	</table>
+	<h1><span class="caps">TODO</span></h1>
+
+
+	<ul>
 	<li>Model snippets (validates_&#8230;)</li>
 	<li>link_to(model) (ltm)</li>
 	<li><span class="caps">RJS</span> demo</li>

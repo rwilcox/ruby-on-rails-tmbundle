@@ -234,7 +234,12 @@ class RailsPath
       when :js  then '.js.rjs'
       else 
         rails_view_ext = ENV['RAILS_VIEW_EXT'] || (wants_haml ? 'haml' : 'erb')
-        ".#{view_format}.#{rails_view_ext}"
+        view_includes_html = ENV['RAILS_VIEW_NAME_INCLUDES_HTML'] || "YES"
+        if view_includes_html == "YES"
+          ".#{view_format}.#{rails_view_ext}"
+        else
+          ".#{rails_view_ext}"
+        end
       end
     when :fixture    then '.yml'
     else '.rb'
