@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>t.column :${1:title}, :${2:binary/boolean/hdate/datetime/decimal/float/integer/string/text/time/timestamp}${3:, limit =&gt; ${4:4096}}${5:, :null =&gt; ${6:false}}
+	<string>t.column :${1:title}, :${2:binary/boolean/hdate/datetime/decimal/float/integer/string/text/time/timestamp}${3:, :limit =&gt; ${4:4096}}${5:, :null =&gt; ${6:false}}
 t.$0</string>
 	<key>name</key>
 	<string>t.column (non-sexy migration)</string>
