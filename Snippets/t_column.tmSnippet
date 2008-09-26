@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>t.column :${1:title}, :${2:binary/boolean/hdate/datetime/decimal/float/integer/string/text/time/timestamp}${3:, :limit =&gt; ${4:4096}}${5:, :null =&gt; ${6:false}}
+t.$0</string>
+	<key>name</key>
+	<string>t.column (non-sexy migration)</string>
+	<key>scope</key>
+	<string>meta.rails.migration.create_table, meta.rails.migration.change_table</string>
+	<key>tabTrigger</key>
+	<string>t.</string>
+	<key>uuid</key>
+	<string>8EF0B282-51BF-46BE-805A-1BB6F1758442</string>
+</dict>
+</plist>
