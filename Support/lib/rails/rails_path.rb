@@ -223,7 +223,7 @@ class RailsPath
     controller_names
   end
   
-  def default_extension_for(type, view_format = nil)
+  def default_extension_for(type, view_format = nil, wants_haml_check=true)
     case type
     when :javascript then ENV['RAILS_JS_EXT'] || '.js'
     when :stylesheet then ENV['RAILS_CSS_EXT'] || (wants_haml ? '.sass' : '.css')
@@ -233,7 +233,7 @@ class RailsPath
       when :xml, :rss, :atom then ".#{view_format}.builder"
       when :js  then '.js.rjs'
       else 
-        rails_view_ext = ENV['RAILS_VIEW_EXT'] || (wants_haml ? 'haml' : 'erb')
+        rails_view_ext = ENV['RAILS_VIEW_EXT'] || ( (wants_haml_check & wants_haml) ? 'haml' : 'erb')
         view_includes_html = ENV['RAILS_VIEW_NAME_INCLUDES_HTML'] || "YES"
         if view_includes_html == "YES"
           ".#{view_format}.#{rails_view_ext}"
@@ -276,6 +276,15 @@ class RailsPath
       return RailsPath.new(existing_view) if File.exist?(existing_view)
     end
     default_view = File.join(rails_root, stubs[:view], modules, controller_name, action_name + default_extension_for(:view, view_format))
+    if ( !File.file?(default_view) and wants_haml )
+      # HAML using project that hasn't converted all views to haml, maybe???? Give .html.erb a shot...
+      maybe_default_view = default_view = File.join(rails_root, stubs[:view], modules, controller_name, action_name + default_extension_for(:view, view_format, false))
+      if File.file? maybe_default_view
+        default_view = maybe_default_view
+      end
+      
+    end
+    
     return RailsPath.new(default_view)
   end
 
