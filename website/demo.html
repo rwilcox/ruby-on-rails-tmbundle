@@ -489,16 +489,16 @@ and then view them as a blog visitor at [http://localhost:3000/blog](http://loca
 <p>We&#8217;re looking for the following additions:</p>
 <ul>
 	<li>rename the column <code>name</code> of table <code>comments</code> to <code>author</code></li>
-	<li>add a new column <code>author_url</code> to table <code>comments</code></li>
-	<li>add an index to the column <code>post_id</code> of the <code>comments</code> table</li>
-</ul>
-<p>Let&#8217;s try to do this all in one migrations file. Start Quick Migration (&amp;#x2303; &amp;#x21E7; M). Let&#8217;s name it <code>ModifyComments</code>. A new migrations file <code>003_modify_comments.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. For now delete <code>mtab</code> and instead enter <code>mcol</code> and press &amp;#x21E5;. Choose <code>Rename / Rename Column</code> (3). Type <code>comments</code> &amp;#x21E5; <code>name</code> &amp;#x21E5; <code>author</code> &amp;#x21E5; &amp;#x21A9;.</p>
-<p>Again type <code>mcol</code> and &amp;#x21E5;. This time choose <code>Add / Remove Column</code> (1). Type <code>comments</code> &amp;#x21E5; <code>author_url</code>, then &amp;#x21E5; twice, and press &amp;#x21A9;.</p>
-<p>Now type <code>mind</code> and &amp;#x21E5;. Choose <code>Add / Remove Index</code> (1). Type <code>comments</code> &amp;#x21E5; <code>post_id</code>.</p>
-<p>The end result looks like this:</p>
-<p><pre class='syntax'><span class="keyword">class </span><span class="class">ModifyComments</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Migration</span>
+		<li>add a new column <code>author_url</code> to table <code>comments</code></li>
+		<li>add an index to the column <code>post_id</code> of the <code>comments</code> table</li>
+	</ul>
+
+
+	<p>Let&#8217;s try to do this all in one migrations file. Start Quick Migration (&#x2303; &#x21E7; M). Let&#8217;s name it <code>ModifyComments</code>. A new migrations file <code>003_modify_comments.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. For now delete <code>mtab</code> and instead enter <code>mcol</code> and press &#x21E5;. Choose <code>Rename / Rename Column</code> (3). Type <code>comments</code> &#x21E5; <code>name</code> &#x21E5; <code>author</code> &#x21E5; &#x21A9;.</p>
 
 <p>Your file may not be called <code>003_modify_comments.rb</code>, it might instead be date-stamped. If you want the incremental style of migration names, set the Environmental Variable <code>TM_RAILS_MIGRATION_INCREMENT</code> to "YES" (or "NO" for date stamp migrations). TextMate defaults to "NO", although this demo will assume incremental style.</p>
+	
+	<p>Again type <code>mcol</code> and &#x21E5;. This time choose <code>Add / Remove Column</code> (1). Type <code>comments</code> &#x21E5; <code>author_url</code>, then &#x21E5; twice, and press &#x21A9;.</p>
 
   <span class="keyword">def </span><span class="method">self.up</span>
     <span class="ident">rename_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:name</span><span class="punct">,</span> <span class="symbol">:author</span>
