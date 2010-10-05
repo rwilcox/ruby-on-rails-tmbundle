@@ -9,16 +9,17 @@
 
 require 'rails_bundle_tools'
 require 'fileutils'
+
 require File.dirname(__FILE__) + "/../lib/rails/generate"
 
 # Look for (created) files and return an array of them
 def files_from_generator_output(output, type = 'create')
-  output.to_a.map { |line| line.scan(/#{type}\s+([^\s]+)$/).flatten.first }.compact.select { |f| File.exist?(f) and !File.directory?(f) }
+  output.split("\n").map { |line| line.scan(/#{type}\s+([^\s]+)$/).flatten.first }.compact.select { |f| File.exist?(f) and !File.directory?(f) }
 end
 
 Generator.setup
 
-if choice = TextMate.choose("Generate:", Generator.names.map { |name| Inflector.humanize name }, :title => "Rails Generator")
+if choice = TextMate.choose("Generate:", Generator.names, :title => "Rails Generator")
   arguments = TextMate::UI.request_string(
     :title => "#{Inflector.humanize Generator.generators[choice].name} Generator", 
     :default => Generator.generators[choice].default_answer,

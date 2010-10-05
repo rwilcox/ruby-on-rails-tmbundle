@@ -102,8 +102,7 @@ module TextMate
         end
       end
       dialog_command = "\"#{cocoa_dialog_command}\" #{command} #{options_list.join(' ')}"
-      # $logger.debug "Dialog command: #{dialog_command}"
-      `#{dialog_command}`.to_a.map { |v| v.strip }
+      `#{dialog_command}`.split
     end
 
     def choose(text, choices = ["none"], options = {})
@@ -114,6 +113,11 @@ module TextMate
       else
         return nil
       end
+    end
+    
+    def standard_choose(text, choices = ["none"], options = {})
+      options = {:title => "Choose", :text => text, :items => choices, :button1 => 'Ok', :button2 => 'Cancel'}.update(options)
+      cocoa_dialog('dropdown', options)
     end
   end
 end
